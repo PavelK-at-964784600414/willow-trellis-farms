@@ -74,12 +74,29 @@ export async function POST(request: NextRequest) {
       items: validatedData.items
     }
 
+    console.log('📧 Attempting to send order notifications for order:', order.id)
+    console.log('📧 Email data:', {
+      customerEmail: orderEmailData.customerEmail,
+      adminEmail: process.env.ADMIN_EMAIL,
+      orderId: orderEmailData.orderId,
+      itemCount: orderEmailData.items.length
+    })
+
     // Send notifications (don't await to avoid blocking the response)
     Promise.all([
-      sendOrderConfirmationEmail(orderEmailData),
-      sendAdminNotificationEmail(orderEmailData)
+      sendOrderConfirmationEmail(orderEmailData).then(() => {
+        console.log('✅ Customer confirmation email sent successfully for order:', order.id)
+      }),
+      sendAdminNotificationEmail(orderEmailData).then(() => {
+        console.log('✅ Admin notification email sent successfully for order:', order.id)
+      })
     ]).catch(error => {
-      console.error('Error sending notifications:', error)
+      console.error('❌ Error sending notifications for order:', order.id, error)
+      console.error('❌ Error details:', {
+        message: error.message,
+        stack: error.stack,
+        orderData: orderEmailData
+      })
     })
 
     return NextResponse.json({
