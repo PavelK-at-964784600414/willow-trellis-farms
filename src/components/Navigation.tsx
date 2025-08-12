@@ -50,7 +50,7 @@ export function Navigation() {
             >
               <div className="flex items-center space-x-1">
                 <ShoppingCartIcon className="h-6 w-6" />
-                <span className="text-sm font-medium hidden sm:block">Basket</span>
+                <span className="text-sm font-medium hidden sm:block">Cart</span>
               </div>
               {state.itemCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-farm-cream-500 text-farm-green-800 text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">

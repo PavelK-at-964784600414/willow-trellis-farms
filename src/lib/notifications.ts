@@ -109,7 +109,7 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
               <div style="color: #0369a1; font-size: 14px;">
                 <p style="margin: 5px 0;"><strong>📧 Email:</strong> <a href="mailto:${process.env.ADMIN_EMAIL}" style="color: #0369a1;">${process.env.ADMIN_EMAIL}</a></p>
                 <p style="margin: 5px 0;"><strong>📱 Phone:</strong> (613) 581-9303</p>
-                <p style="margin: 5px 0;"><strong>🌐 Website:</strong> <a href="${process.env.NEXTAUTH_URL}" style="color: #0369a1;">willowtrellisfarms.com</a></p>
+                <p style="margin: 5px 0;"><strong>🌐 Website:</strong> <a href="${process.env.NEXTAUTH_URL}" style="color: #0369a1;">willow-trellis-farms.vercel.app</a></p>
                 <p style="margin: 5px 0;"><strong>📍 Address:</strong> 3013 Upper Otterson, Ottawa, ON</p>
                 <p style="margin: 15px 0 5px 0;"><strong>🕒 Business Hours:</strong></p>
                 <ul style="margin: 0; padding-left: 20px;">
