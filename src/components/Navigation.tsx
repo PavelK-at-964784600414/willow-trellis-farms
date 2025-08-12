@@ -30,10 +30,10 @@ export function Navigation() {
 
           {/* Navigation Items - Responsive */}
           <div className="flex items-center space-x-1 sm:space-x-4 md:space-x-6">
-            {/* Fresh Produce - Hidden on very small screens */}
+            {/* Fresh Produce - Always visible with responsive text */}
             <Link
               href="/products"
-              className="hover:text-gray-600 transition-colors font-medium hidden xs:block text-sm sm:text-base" 
+              className="hover:text-gray-600 transition-colors font-medium text-sm sm:text-base" 
               style={{color: '#000000'}}
             >
               <span className="hidden sm:inline">Fresh Produce</span>
