@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '475px', // Extra small devices
+      },
       colors: {
         // Farm-inspired color palette
         farm: {
