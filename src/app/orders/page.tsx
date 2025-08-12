@@ -80,9 +80,9 @@ export default function Orders() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-light-bg">
+      <div className="min-h-screen" style={{backgroundColor: '#D9D7D3'}}>
         <Navigation />
-        <div className="flex justify-center items-center h-64">
+        <div className="flex justify-center items-center h-64 pt-28">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
         </div>
       </div>
@@ -91,9 +91,9 @@ export default function Orders() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-light-bg">
+      <div className="min-h-screen" style={{backgroundColor: '#D9D7D3'}}>
         <Navigation />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28">
           <div className="text-center">
             <p className="text-red-600 text-lg">{error}</p>
           </div>
@@ -103,15 +103,15 @@ export default function Orders() {
   }
 
   return (
-    <div className="min-h-screen bg-light-bg">
+    <div className="min-h-screen" style={{backgroundColor: '#D9D7D3'}}>
       <Navigation />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold text-light-text mb-8">My Orders</h1>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-28">
+        <h1 className="text-3xl font-bold mb-8" style={{color: '#000000'}}>My Orders</h1>
         
         {orders.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-lg text-light-text mb-4">You haven't placed any orders yet.</p>
+            <p className="text-lg mb-4" style={{color: '#000000'}}>You haven't placed any orders yet.</p>
             <Link
               href="/products"
               className="inline-block bg-green-600 text-white font-semibold px-8 py-3 rounded-lg text-lg hover:bg-green-700 transition-colors"
@@ -125,24 +125,24 @@ export default function Orders() {
               <div key={order.id} className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-light-text">
+                    <h3 className="text-lg font-semibold" style={{color: '#000000'}}>
                       Order #{order.id.slice(-8)}
                     </h3>
-                    <p className="text-sm text-light-text">
+                    <p className="text-sm" style={{color: '#000000'}}>
                       Placed on {format(new Date(order.createdAt), 'MMM dd, yyyy')}
                     </p>
                   </div>
                   <div className="mt-2 sm:mt-0 flex items-center space-x-4">
                     {getStatusBadge(order.status)}
-                    <span className="text-lg font-semibold text-light-text">
+                    <span className="text-lg font-semibold" style={{color: '#000000'}}>
                       ${order.total.toFixed(2)}
                     </span>
                   </div>
                 </div>
                 
                 <div className="border-t border-gray-200 pt-4">
-                  <h4 className="font-medium text-light-text mb-2">Items:</h4>
-                  <div className="space-y-2 text-light-text">
+                  <h4 className="font-medium mb-2" style={{color: '#000000'}}>Items:</h4>
+                  <div className="space-y-2" style={{color: '#000000'}}>
                     {order.items.map(item => (
                       <div key={item.id} className="flex items-center justify-between text-sm">
                         <span>
@@ -158,8 +158,8 @@ export default function Orders() {
                 
                 {order.deliveryAddress && (
                   <div className="border-t border-gray-200 pt-4 mt-4">
-                    <h4 className="font-medium text-light-text mb-1">Delivery Address:</h4>
-                    <p className="text-sm text-light-text">{order.deliveryAddress}</p>
+                    <h4 className="font-medium mb-1" style={{color: '#000000'}}>Delivery Address:</h4>
+                    <p className="text-sm" style={{color: '#000000'}}>{order.deliveryAddress}</p>
                   </div>
                 )}
               </div>
