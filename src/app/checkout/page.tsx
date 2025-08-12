@@ -72,17 +72,17 @@ export default function Checkout() {
   }
 
   return (
-    <div className="min-h-screen bg-light-bg">
+    <div className="min-h-screen" style={{backgroundColor: '#D9D7D3'}}>
       <Navigation />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-rustic font-bold text-light-text mb-8">🛒 Checkout - Farm Pickup</h1>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-28">
+        <h1 className="text-3xl font-rustic font-bold mb-8" style={{color: '#000000'}}>🛒 Checkout - Farm Pickup</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Checkout Form */}
           <div>
             <div className="bg-white rounded-xl shadow-md p-6 border-2 border-gray-200">
-              <h2 className="text-xl font-rustic font-semibold text-light-text mb-6">
+              <h2 className="text-xl font-rustic font-semibold mb-6" style={{color: '#000000'}}>
                 📋 Pickup Information
               </h2>
               
@@ -91,8 +91,8 @@ export default function Checkout() {
                 <div className="flex items-start">
                   <span className="text-2xl mr-3">🚜</span>
                   <div>
-                    <h3 className="font-semibold text-light-text">Farm Pickup Location</h3>
-                    <p className="text-sm text-light-text mt-1">
+                    <h3 className="font-semibold" style={{color: '#000000'}}>Farm Pickup Location</h3>
+                    <p className="text-sm mt-1" style={{color: '#000000'}}>
                       📍 3013 Upper Otterson, Ottawa, ON<br/>
                       🕒 Tuesday-Sunday: 8AM-6PM<br/>
                       📞 (613) 581-9303
@@ -109,7 +109,7 @@ export default function Checkout() {
                 )}
 
                 <div>
-                  <label htmlFor="customerName" className="block text-sm font-medium text-light-text">
+                  <label htmlFor="customerName" className="block text-sm font-medium" style={{color: '#000000'}}>
                     Full Name
                   </label>
                   <input
@@ -120,11 +120,12 @@ export default function Checkout() {
                     value={formData.customerName}
                     onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                    style={{color: '#000000'}}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="customerEmail" className="block text-sm font-medium text-light-text">
+                  <label htmlFor="customerEmail" className="block text-sm font-medium" style={{color: '#000000'}}>
                     Email Address
                   </label>
                   <input
@@ -135,11 +136,12 @@ export default function Checkout() {
                     value={formData.customerEmail}
                     onChange={(e) => setFormData({ ...formData, customerEmail: e.target.value })}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                    style={{color: '#000000'}}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="customerPhone" className="block text-sm font-medium text-light-text">
+                  <label htmlFor="customerPhone" className="block text-sm font-medium" style={{color: '#000000'}}>
                     Phone Number
                   </label>
                   <input
@@ -149,13 +151,14 @@ export default function Checkout() {
                     value={formData.customerPhone}
                     onChange={(e) => setFormData({ ...formData, customerPhone: e.target.value })}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                    style={{color: '#000000'}}
                     placeholder="+1 (555) 123-4567"
                   />
-                  <p className="text-xs text-light-text mt-1">We'll call you if there are any questions about your order</p>
+                  <p className="text-xs mt-1" style={{color: '#000000'}}>We'll call you if there are any questions about your order</p>
                 </div>
 
                 <div>
-                  <label htmlFor="pickupNotes" className="block text-sm font-medium text-light-text">
+                  <label htmlFor="pickupNotes" className="block text-sm font-medium" style={{color: '#000000'}}>
                     Pickup Notes (Optional)
                   </label>
                   <textarea
@@ -165,6 +168,7 @@ export default function Checkout() {
                     value={formData.pickupNotes}
                     onChange={(e) => setFormData({ ...formData, pickupNotes: e.target.value })}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                    style={{color: '#000000'}}
                     placeholder="Any special requests or preferred pickup time..."
                   />
                 </div>
@@ -183,7 +187,7 @@ export default function Checkout() {
           {/* Order Summary */}
           <div>
             <div className="bg-white rounded-xl shadow-md p-6 border-2 border-gray-200">
-              <h2 className="text-xl font-rustic font-semibold text-light-text mb-6">
+              <h2 className="text-xl font-rustic font-semibold mb-6" style={{color: '#000000'}}>
                 🧺 Your Farm Basket
               </h2>
               
@@ -200,12 +204,12 @@ export default function Checkout() {
                       />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-medium text-light-text">{item.name}</h3>
-                      <p className="text-sm text-light-text">
+                      <h3 className="font-medium" style={{color: '#000000'}}>{item.name}</h3>
+                      <p className="text-sm" style={{color: '#000000'}}>
                         ${item.price.toFixed(2)} x {item.quantity}
                       </p>
                     </div>
-                    <div className="font-semibold text-light-text">
+                    <div className="font-semibold" style={{color: '#000000'}}>
                       ${(item.price * item.quantity).toFixed(2)}
                     </div>
                   </div>
@@ -213,22 +217,22 @@ export default function Checkout() {
               </div>
               
               <div className="border-t border-gray-200 pt-4 space-y-2">
-                <div className="flex justify-between text-light-text">
+                <div className="flex justify-between" style={{color: '#000000'}}>
                   <span>Subtotal</span>
                   <span>${state.total.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-light-text">
+                <div className="flex justify-between" style={{color: '#000000'}}>
                   <span>Pickup Fee</span>
                   <span className="text-green-600 font-medium">Free!</span>
                 </div>
-                <div className="flex justify-between font-bold text-lg border-t border-gray-200 pt-2 text-light-text">
+                <div className="flex justify-between font-bold text-lg border-t border-gray-200 pt-2" style={{color: '#000000'}}>
                   <span>Total</span>
                   <span>${state.total.toFixed(2)}</span>
                 </div>
               </div>
               
-              <div className="mt-6 text-sm text-light-text bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-light-text mb-2">🌾 Pickup Details:</h4>
+              <div className="mt-6 text-sm bg-gray-50 p-4 rounded-lg" style={{color: '#000000'}}>
+                <h4 className="font-semibold mb-2" style={{color: '#000000'}}>🌾 Pickup Details:</h4>
                 <ul className="space-y-1">
                   <li>• Fresh produce ready within 2-4 hours</li>
                   <li>• Free farm pickup (no delivery fees!)</li>
