@@ -80,10 +80,10 @@ export default function Orders() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-farm-cream-50">
+      <div className="min-h-screen bg-light-bg">
         <Navigation />
-        <div className="flex items-center justify-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-farm-green-600"></div>
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
         </div>
       </div>
     )
@@ -91,11 +91,11 @@ export default function Orders() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-farm-cream-50">
+      <div className="min-h-screen bg-light-bg">
         <Navigation />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
-            Error: {error}
+          <div className="text-center">
+            <p className="text-red-600 text-lg">{error}</p>
           </div>
         </div>
       </div>
@@ -103,46 +103,46 @@ export default function Orders() {
   }
 
   return (
-    <div className="min-h-screen bg-farm-cream-50">
+    <div className="min-h-screen bg-light-bg">
       <Navigation />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold text-farm-green-800 mb-8">My Orders</h1>
+        <h1 className="text-3xl font-bold text-light-text mb-8">My Orders</h1>
         
         {orders.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-lg text-farm-brown-600 mb-4">You haven't placed any orders yet.</p>
+            <p className="text-lg text-light-text mb-4">You haven't placed any orders yet.</p>
             <Link
               href="/products"
-              className="inline-block bg-farm-green-600 text-white font-semibold px-8 py-3 rounded-lg text-lg hover:bg-farm-green-700 transition-colors"
+              className="inline-block bg-green-600 text-white font-semibold px-8 py-3 rounded-lg text-lg hover:bg-green-700 transition-colors"
             >
-              Start Shopping
+              Browse Products
             </Link>
           </div>
         ) : (
           <div className="space-y-6">
-            {orders.map(order => (
-              <div key={order.id} className="bg-farm-cream-100 rounded-lg shadow-md border border-farm-brown-200 p-6">
+            {orders.map((order) => (
+              <div key={order.id} className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-farm-green-800">
+                    <h3 className="text-lg font-semibold text-light-text">
                       Order #{order.id.slice(-8)}
                     </h3>
-                    <p className="text-sm text-farm-brown-600">
+                    <p className="text-sm text-light-text">
                       Placed on {format(new Date(order.createdAt), 'MMM dd, yyyy')}
                     </p>
                   </div>
                   <div className="mt-2 sm:mt-0 flex items-center space-x-4">
                     {getStatusBadge(order.status)}
-                    <span className="text-lg font-semibold text-farm-green-800">
+                    <span className="text-lg font-semibold text-light-text">
                       ${order.total.toFixed(2)}
                     </span>
                   </div>
                 </div>
                 
-                <div className="border-t border-farm-brown-200 pt-4">
-                  <h4 className="font-medium text-farm-green-800 mb-2">Items:</h4>
-                  <div className="space-y-2 text-farm-brown-700">
+                <div className="border-t border-gray-200 pt-4">
+                  <h4 className="font-medium text-light-text mb-2">Items:</h4>
+                  <div className="space-y-2 text-light-text">
                     {order.items.map(item => (
                       <div key={item.id} className="flex items-center justify-between text-sm">
                         <span>
@@ -157,9 +157,9 @@ export default function Orders() {
                 </div>
                 
                 {order.deliveryAddress && (
-                  <div className="border-t border-farm-brown-200 pt-4 mt-4">
-                    <h4 className="font-medium text-farm-green-800 mb-1">Delivery Address:</h4>
-                    <p className="text-sm text-farm-brown-600">{order.deliveryAddress}</p>
+                  <div className="border-t border-gray-200 pt-4 mt-4">
+                    <h4 className="font-medium text-light-text mb-1">Delivery Address:</h4>
+                    <p className="text-sm text-light-text">{order.deliveryAddress}</p>
                   </div>
                 )}
               </div>

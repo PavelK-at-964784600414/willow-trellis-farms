@@ -13,15 +13,15 @@ export default function Cart() {
 
   if (state.items.length === 0) {
     return (
-      <div className="min-h-screen bg-farm-cream-50">
+      <div className="min-h-screen" style={{backgroundColor: '#D9D7D3'}}>
         <Navigation />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-farm-green-800 mb-4">Your Cart</h1>
-            <p className="text-lg text-farm-brown-600 mb-8">Your cart is empty</p>
+            <h1 className="text-3xl font-bold mb-4" style={{color: '#000000'}}>Your Cart</h1>
+            <p className="text-lg mb-8" style={{color: '#000000'}}>Your cart is empty</p>
             <Link
               href="/products"
-              className="inline-block bg-farm-green-600 text-white font-semibold px-8 py-3 rounded-lg text-lg hover:bg-farm-green-700 transition-colors"
+              className="inline-block bg-green-600 text-white font-semibold px-8 py-3 rounded-lg text-lg hover:bg-green-700 transition-colors"
             >
               Browse Products
             </Link>
@@ -32,18 +32,18 @@ export default function Cart() {
   }
 
   return (
-    <div className="min-h-screen bg-farm-cream-50">
+    <div className="min-h-screen" style={{backgroundColor: '#D9D7D3'}}>
       <Navigation />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold text-farm-green-800 mb-8">Your Cart</h1>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-28">
+        <h1 className="text-3xl font-bold mb-8" style={{color: '#000000'}}>Your Cart</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2">
-                        <div className="bg-farm-cream-100 rounded-lg shadow-md border border-farm-brown-200">
+                        <div className="bg-white rounded-lg shadow-md border border-gray-200">
               {state.items.map(item => (
-                <div key={item.id} className="flex items-center p-6 border-b border-farm-brown-200 last:border-b-0">
+                                <div key={item.id} className="flex items-center p-6 border-b border-gray-200 last:border-b-0">
                   <div className="relative h-20 w-20 flex-shrink-0">
                     <Image
                       src={item.imageUrl}
@@ -55,10 +55,10 @@ export default function Cart() {
                   </div>
                   
                   <div className="ml-4 flex-1">
-                    <h3 className="text-lg font-semibold text-farm-green-800">
+                    <h3 className="text-lg font-semibold" style={{color: '#000000'}}>
                       {item.name}
                     </h3>
-                    <p className="text-farm-green-600 font-medium">
+                    <p className="text-green-600 font-medium">
                       ${item.price.toFixed(2)}
                     </p>
                   </div>
@@ -66,24 +66,24 @@ export default function Cart() {
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="p-1 hover:bg-farm-cream-100 rounded text-farm-brown-600"
+                      className="p-1 hover:bg-gray-100 rounded text-gray-600"
                     >
                       <MinusIcon className="h-4 w-4" />
                     </button>
                     
-                    <span className="w-12 text-center font-medium text-farm-green-800">
+                    <span className="w-12 text-center font-medium" style={{color: '#000000'}}>
                       {item.quantity}
                     </span>
                     
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="p-1 hover:bg-farm-cream-100 rounded text-farm-brown-600"
+                      className="p-1 hover:bg-gray-100 rounded text-gray-600"
                     >
                       <PlusIcon className="h-4 w-4" />
                     </button>
                   </div>
                   
-                  <div className="ml-4 text-lg font-semibold text-farm-green-800">
+                  <div className="ml-4 text-lg font-semibold" style={{color: '#000000'}}>
                     ${(item.price * item.quantity).toFixed(2)}
                   </div>
                   
@@ -100,18 +100,18 @@ export default function Cart() {
           
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-farm-cream-100 rounded-lg shadow-md border border-farm-brown-200 p-6">
-              <h2 className="text-xl font-semibold text-farm-green-800 mb-4">
+            <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
+              <h2 className="text-xl font-semibold mb-4" style={{color: '#000000'}}>
                 Order Summary
               </h2>
               
-              <div className="space-y-2 mb-4 text-farm-brown-700">
+              <div className="space-y-2 mb-4" style={{color: '#000000'}}>
                 <div className="flex justify-between">
                   <span>Items ({state.itemCount})</span>
                   <span>${state.total.toFixed(2)}</span>
                 </div>
-                <div className="border-t border-farm-brown-200 pt-2">
-                  <div className="flex justify-between font-semibold text-lg text-farm-green-800">
+                <div className="border-t border-gray-200 pt-2">
+                  <div className="flex justify-between font-semibold text-lg" style={{color: '#000000'}}>
                     <span>Total</span>
                     <span>${state.total.toFixed(2)}</span>
                   </div>
@@ -121,18 +121,18 @@ export default function Cart() {
               {session ? (
                 <Link
                   href="/checkout"
-                  className="w-full bg-farm-green-600 text-white py-3 px-4 rounded-md hover:bg-farm-green-700 transition-colors text-center block font-semibold"
+                  className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 transition-colors text-center block font-semibold"
                 >
                   Proceed to Checkout
                 </Link>
               ) : (
                 <div className="space-y-2">
-                  <p className="text-sm text-farm-brown-600 text-center">
+                  <p className="text-sm text-center" style={{color: '#000000'}}>
                     Please sign in to checkout
                   </p>
                   <Link
                     href="/auth/signin"
-                    className="w-full bg-farm-green-600 text-white py-3 px-4 rounded-md hover:bg-farm-green-700 transition-colors text-center block font-semibold"
+                    className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 transition-colors text-center block font-semibold"
                   >
                     Sign In
                   </Link>
@@ -142,7 +142,7 @@ export default function Cart() {
               <div className="mt-4">
                 <Link
                   href="/products"
-                  className="w-full border border-farm-green-600 text-farm-green-600 py-3 px-4 rounded-md hover:bg-farm-green-50 transition-colors text-center block font-semibold"
+                  className="w-full border border-green-600 text-green-600 py-3 px-4 rounded-md hover:bg-green-50 transition-colors text-center block font-semibold"
                 >
                   Continue Shopping
                 </Link>

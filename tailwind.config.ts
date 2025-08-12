@@ -59,7 +59,10 @@ export default {
             800: '#3c523c',
             900: '#344434',
           }
-        }
+        },
+        // New light theme colors
+        'light-bg': '#D9D7D3',  // Main background color
+        'light-text': '#000000', // Black text
       },
       fontFamily: {
         'serif': ['Georgia', 'Cambria', 'Times New Roman', 'serif'],
