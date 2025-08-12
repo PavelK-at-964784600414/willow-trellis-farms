@@ -114,8 +114,8 @@ export default function Profile() {
         phone: formData.phone
       })
 
-    } catch (error: any) {
-      setError(error.message)
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
@@ -264,9 +264,9 @@ export default function Profile() {
                 🚜 Farm Pickup Information
               </h3>
               <div className="text-sm text-farm-sage-700 space-y-1">
-                <p><strong>📍 Location:</strong> 1234 Willow Lane, Farmville Valley</p>
+                <p><strong>📍 Location:</strong> 3013 Upper Otterson, Ottawa, ON</p>
                 <p><strong>🕒 Hours:</strong> Tuesday-Sunday: 8AM-6PM</p>
-                <p><strong>📞 Phone:</strong> (555) 123-FARM</p>
+                <p><strong>📞 Phone:</strong> (613) 581-9303</p>
                 <p><strong>🌾 What to expect:</strong> Meet our farmers, see where your food grows, and enjoy the farm experience!</p>
               </div>
             </div>

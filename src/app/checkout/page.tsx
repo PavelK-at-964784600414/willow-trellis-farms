@@ -64,8 +64,8 @@ export default function Checkout() {
       clearCart()
       router.push(`/order-success?orderId=${data.orderId}`)
 
-    } catch (error: any) {
-      setError(error.message)
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
@@ -81,7 +81,7 @@ export default function Checkout() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Checkout Form */}
           <div>
-            <div className="bg-white rounded-xl shadow-md p-6 border-2 border-farm-green-200">
+            <div className="bg-farm-cream-100 rounded-xl shadow-md p-6 border-2 border-farm-green-200">
               <h2 className="text-xl font-rustic font-semibold text-farm-green-800 mb-6">
                 📋 Pickup Information
               </h2>
@@ -93,9 +93,9 @@ export default function Checkout() {
                   <div>
                     <h3 className="font-semibold text-farm-brown-800">Farm Pickup Location</h3>
                     <p className="text-sm text-farm-brown-700 mt-1">
-                      📍 1234 Willow Lane, Farmville Valley<br/>
+                      📍 3013 Upper Otterson, Ottawa, ON<br/>
                       🕒 Tuesday-Sunday: 8AM-6PM<br/>
-                      📞 (555) 123-FARM
+                      📞 (613) 581-9303
                     </p>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ export default function Checkout() {
                     className="mt-1 block w-full px-3 py-2 border border-farm-green-300 rounded-md shadow-sm focus:outline-none focus:ring-farm-green-500 focus:border-farm-green-500"
                     placeholder="+1 (555) 123-4567"
                   />
-                  <p className="text-xs text-farm-sage-600 mt-1">We'll text you when your order is ready for pickup</p>
+                  <p className="text-xs text-farm-sage-600 mt-1">We'll call you if there are any questions about your order</p>
                 </div>
 
                 <div>
@@ -182,7 +182,7 @@ export default function Checkout() {
           
           {/* Order Summary */}
           <div>
-            <div className="bg-white rounded-xl shadow-md p-6 border-2 border-farm-green-200">
+            <div className="bg-farm-cream-100 rounded-xl shadow-md p-6 border-2 border-farm-green-200">
               <h2 className="text-xl font-rustic font-semibold text-farm-green-800 mb-6">
                 🧺 Your Farm Basket
               </h2>

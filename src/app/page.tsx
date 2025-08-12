@@ -51,7 +51,7 @@ export default function Home() {
                 Visit our farm stand to collect your fresh produce order. Open Tuesday-Sunday, 8AM-6PM
               </p>
               <p className="text-farm-brown-600 mt-2">
-                📍 <strong>Location:</strong> 1234 Willow Lane, Farmville Valley • <strong>Phone:</strong> (555) 123-FARM
+                📍 <strong>Location:</strong> 3013 Upper Otterson, Ottawa, ON • <strong>Phone:</strong> (613) 581-9303
               </p>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function Home() {
               Why Choose Willow Trellis Farms?
             </h2>
             <p className="text-xl text-farm-sage-700 max-w-3xl mx-auto">
-              Three generations of farming expertise bringing you the freshest, most flavorful produce 
+              A farming expert bringing you the freshest, most flavorful produce 
               grown with sustainable practices and genuine care.
             </p>
           </div>
@@ -165,7 +165,7 @@ export default function Home() {
                 <span className="text-xl font-rustic font-bold">Willow Trellis Farms</span>
               </div>
               <p className="text-farm-cream-200">
-                Three generations of farming excellence, bringing you the freshest produce with love and care.
+                Bringing you the freshest produce with love and care.
               </p>
             </div>
             <div>
@@ -176,9 +176,9 @@ export default function Home() {
             </div>
             <div>
               <h4 className="font-rustic font-bold text-lg mb-4">Contact Us</h4>
-              <p className="text-farm-cream-200">📍 1234 Willow Lane</p>
-              <p className="text-farm-cream-200">Farmville Valley</p>
-              <p className="text-farm-cream-200">📞 (555) 123-FARM</p>
+              <p className="text-farm-cream-200">📍 3013 Upper Otterson</p>
+              <p className="text-farm-cream-200">Ottawa, ON</p>
+              <p className="text-farm-cream-200">📞 (613) 581-9303</p>
             </div>
           </div>
           <div className="border-t border-farm-brown-600 mt-8 pt-8 text-center">

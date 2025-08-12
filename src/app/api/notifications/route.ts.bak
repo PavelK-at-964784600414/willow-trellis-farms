@@ -152,7 +152,7 @@ export async function POST(request: NextRequest) {
           const twilioClient = await getTwilioClient()
           if (twilioClient) {
             const smsMessage = `🌾 Willow Trellis Farms: ${message}\n\nFarm Pickup: 3013 Upper Otterson, Ottawa, ON\nHours: Tue-Sun 8AM-6PM\nCall: (613) 581-9303`
-
+            
             await twilioClient.messages.create({
               body: smsMessage,
               from: process.env.TWILIO_PHONE_NUMBER,
@@ -163,7 +163,7 @@ export async function POST(request: NextRequest) {
             results.errors.push(`Twilio not configured, SMS not sent to ${user.name || user.email}`)
           }
         }
-      } catch (error: unknown) {
+      } catch (error: any) {
         results.errors.push(`Failed to notify ${user.name || user.email}: ${error.message}`)
       }
     }
@@ -192,7 +192,7 @@ export async function POST(request: NextRequest) {
       results
     })
 
-  } catch (error: unknown) {
+  } catch (error: any) {
     console.error('Notification error:', error)
     return NextResponse.json(
       { error: 'Failed to send notifications' },
@@ -250,7 +250,7 @@ export async function GET(request: NextRequest) {
       notifications
     })
 
-  } catch (error: unknown) {
+  } catch (error: any) {
     console.error('Get notifications error:', error)
     return NextResponse.json(
       { error: 'Failed to fetch data' },

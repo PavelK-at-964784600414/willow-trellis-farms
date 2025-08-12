@@ -44,7 +44,6 @@ model User {
   password      String?
   emailVerified DateTime?
   image         String?
-  role          Role      @default(USER)
   phone         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
@@ -119,11 +118,6 @@ model Notification {
   createdAt     DateTime @default(now())
 
   sentByUser User @relation(fields: [sentBy], references: [id])
-}
-
-enum Role {
-  USER
-  ADMIN
 }
 
 enum OrderStatus {

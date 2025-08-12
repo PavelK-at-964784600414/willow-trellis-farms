@@ -9,22 +9,13 @@ export default withAuth(
       authorized: ({ token, req }) => {
         const { pathname } = req.nextUrl
         
-        // Allow access to public routes
-        if (pathname.startsWith('/auth') || pathname === '/' || pathname.startsWith('/products')) {
-          return true
-        }
-        
-        // Require authentication for protected routes
-        if (pathname.startsWith('/cart') || pathname.startsWith('/checkout') || pathname.startsWith('/orders')) {
+        // Require authentication for checkout and orders
+        if (pathname.startsWith('/checkout') || pathname.startsWith('/orders')) {
           return !!token
         }
         
-        // Require admin role for admin routes
-        if (pathname.startsWith('/admin')) {
-          return token?.role === 'ADMIN'
-        }
-        
-        return !!token
+        // For all other matched routes, allow access
+        return true
       },
     },
   }
@@ -32,9 +23,7 @@ export default withAuth(
 
 export const config = {
   matcher: [
-    '/cart/:path*',
     '/checkout/:path*',
     '/orders/:path*',
-    '/admin/:path*',
   ]
 }

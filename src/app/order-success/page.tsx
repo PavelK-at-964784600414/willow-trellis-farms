@@ -20,7 +20,7 @@ function OrderSuccessContent() {
         </h1>
         
         <p className="text-lg text-gray-600 mb-6">
-          Thank you for your order. We'll start preparing your fresh produce right away.
+          Thank you for your order. We&apos;ll start preparing your fresh produce right away.
         </p>
         
         {orderId && (
@@ -34,10 +34,10 @@ function OrderSuccessContent() {
           <div className="bg-gray-50 rounded-lg p-4">
             <h3 className="font-semibold text-gray-900 mb-2">What happens next?</h3>
             <ul className="text-sm text-gray-600 space-y-1">
-              <li>• You'll receive a confirmation email shortly</li>
-              <li>• We'll send you SMS updates on your order status</li>
+              <li>• You&apos;ll receive a confirmation email shortly</li>
+              <li>• We&apos;ll send you SMS updates on your order status</li>
               <li>• Your fresh produce will be ready for pickup within 24 hours</li>
-              <li>• Track your order in the "My Orders" section</li>
+              <li>• Track your order in the &quot;My Orders&quot; section</li>
             </ul>
           </div>
         </div>

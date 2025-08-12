@@ -11,7 +11,7 @@ export interface ProductData {
 
 let cachedProducts: ProductData[] = []
 let lastFetchTime = 0
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+const CACHE_DURATION = 1 * 60 * 1000 // 1 minute for faster updates
 
 export async function getProductsFromSheet(): Promise<ProductData[]> {
   const now = Date.now()
@@ -40,6 +40,8 @@ export async function getProductsFromSheet(): Promise<ProductData[]> {
 
     const rows = response.data.values || []
     
+    // Debug logging removed for production
+    
     const products: ProductData[] = rows.map((row) => ({
       name: row[0] || '',
       imageUrl: row[1] || '',
@@ -47,12 +49,17 @@ export async function getProductsFromSheet(): Promise<ProductData[]> {
       quantity: parseInt(row[3]) || 0,
       category: row[4] || 'Other',
       description: row[5] || '',
-    })).filter(product => product.name && product.price > 0)
-
-    cachedProducts = products
+    }))
+    
+    // Filter out invalid products (no name or price <= 0)
+    const filteredProducts = products.filter(product => 
+      product.name && product.price > 0
+    )
+    
+    cachedProducts = filteredProducts
     lastFetchTime = now
     
-    return products
+    return filteredProducts
   } catch (error) {
     console.error('Error fetching products from Google Sheets:', error)
     return cachedProducts // Return cached data if available

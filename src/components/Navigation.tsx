@@ -44,15 +44,6 @@ export function Navigation() {
               </Link>
             )}
 
-            {session?.user?.role === 'ADMIN' && (
-              <Link
-                href="/admin"
-                className="hover:text-farm-cream-200 transition-colors font-medium"
-              >
-                Farm Admin
-              </Link>
-            )}
-
             <Link
               href="/cart"
               className="relative hover:text-farm-cream-200 transition-colors group"
@@ -62,7 +53,7 @@ export function Navigation() {
                 <span className="text-sm font-medium hidden sm:block">Basket</span>
               </div>
               {state.itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-farm-cream-500 text-farm-green-800 text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
+                <span className="absolute -top-2 -right-2 bg-farm-cream-500 text-farm-green-800 text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
                   {state.itemCount}
                 </span>
               )}

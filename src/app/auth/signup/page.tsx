@@ -46,8 +46,8 @@ export default function SignUp() {
         })
       }, 1000)
 
-    } catch (error: any) {
-      setError(error.message)
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
@@ -59,13 +59,13 @@ export default function SignUp() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-farm-cream-50">
         <Navigation />
         <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900">Success!</h2>
-              <p className="mt-2 text-gray-600">
+              <h2 className="text-3xl font-bold text-farm-green-800">Success!</h2>
+              <p className="mt-2 text-farm-brown-600">
                 Your account has been created. Signing you in...
               </p>
             </div>
@@ -76,15 +76,15 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-farm-cream-50">
       <Navigation />
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-bold text-farm-green-800">
               Create your account
             </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
+            <p className="mt-2 text-center text-sm text-farm-brown-600">
               Or{' '}
               <Link href="/auth/signin" className="font-medium text-green-600 hover:text-green-500">
                 sign in to your existing account

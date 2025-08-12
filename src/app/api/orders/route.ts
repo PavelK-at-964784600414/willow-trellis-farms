@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { sendOrderConfirmationEmail, sendOrderNotificationSMS, sendAdminNotificationEmail } from '@/lib/notifications'
+import { sendOrderConfirmationEmail, sendAdminNotificationEmail } from '@/lib/notifications'
 import { z } from 'zod'
 
 const orderSchema = z.object({
@@ -68,6 +68,7 @@ export async function POST(request: NextRequest) {
     const orderEmailData = {
       customerName: validatedData.customerName,
       customerEmail: validatedData.customerEmail,
+      customerPhone: validatedData.customerPhone,
       orderId: order.id,
       total,
       items: validatedData.items
@@ -76,7 +77,6 @@ export async function POST(request: NextRequest) {
     // Send notifications (don't await to avoid blocking the response)
     Promise.all([
       sendOrderConfirmationEmail(orderEmailData),
-      validatedData.customerPhone ? sendOrderNotificationSMS(validatedData.customerPhone, order.id, total) : Promise.resolve(),
       sendAdminNotificationEmail(orderEmailData)
     ]).catch(error => {
       console.error('Error sending notifications:', error)

@@ -7,7 +7,34 @@ export async function GET() {
     // Get products from Google Sheets
     const sheetProducts = await getProductsFromSheet()
     
-    // Sync with database
+    // Get current sheet product names for comparison
+    const sheetProductNames = new Set(sheetProducts.map(p => p.name))
+    
+    // Get all existing products from database
+    const existingProducts = await prisma.product.findMany()
+    
+    // Handle products that are no longer in the sheet
+    const productsToUpdate = existingProducts.filter(dbProduct => 
+      !sheetProductNames.has(dbProduct.name)
+    )
+    
+    if (productsToUpdate.length > 0) {
+      // Debug logging removed for production
+      
+      // Set quantity to 0 instead of deleting to preserve order history
+      await prisma.product.updateMany({
+        where: {
+          id: {
+            in: productsToUpdate.map(p => p.id)
+          }
+        },
+        data: {
+          quantity: 0
+        }
+      })
+    }
+    
+    // Sync with database (add/update products from sheet)
     for (const product of sheetProducts) {
       const existingProduct = await prisma.product.findFirst({
         where: { name: product.name }
@@ -25,6 +52,7 @@ export async function GET() {
           }
         })
       } else {
+        // Debug logging removed for production
         await prisma.product.create({
           data: {
             name: product.name,
