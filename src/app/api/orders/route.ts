@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const session = await getServerSession(authOptions)
     
@@ -128,7 +128,6 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const { searchParams } = new URL(request.url)
     const isAdmin = session.user.role === 'ADMIN'
     
     // If admin, get all orders; otherwise, get only user's orders

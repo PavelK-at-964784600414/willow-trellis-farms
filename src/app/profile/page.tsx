@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { Navigation } from '@/components/Navigation'
@@ -36,28 +36,37 @@ export default function Profile() {
       return
     }
     
-    // Fetch current user data from API
-    fetchUserProfile()
-  }, [session])
-
-  const fetchUserProfile = async () => {
-    if (!session) return
-    
-    try {
-      const response = await fetch('/api/user/profile')
-      if (response.ok) {
-        const data = await response.json()
-        setFormData({
-          name: data.user.name || '',
-          email: data.user.email || '',
-          phone: data.user.phone || '',
-          emailNotifications: true, // Default to true
-          smsNotifications: false, // Default to false
-          farmUpdates: true,
-          orderNotifications: true,
-          promotionalEmails: false
-        })
-      } else {
+    const fetchUserProfile = async () => {
+      if (!session) return
+      
+      try {
+        const response = await fetch('/api/user/profile')
+        if (response.ok) {
+          const data = await response.json()
+          setFormData({
+            name: data.user?.name || '',
+            email: data.user?.email || '',
+            phone: data.user?.phone || '',
+            emailNotifications: true,
+            smsNotifications: false,
+            farmUpdates: true,
+            orderNotifications: true,
+            promotionalEmails: false
+          })
+        } else {
+          // Fallback to session data
+          setFormData({
+            name: session.user?.name || '',
+            email: session.user?.email || '',
+            phone: '',
+            emailNotifications: true,
+            smsNotifications: false,
+            farmUpdates: true,
+            orderNotifications: true,
+            promotionalEmails: false
+          })
+        }
+      } catch (_err) {
         // Fallback to session data
         setFormData({
           name: session.user?.name || '',
@@ -70,20 +79,11 @@ export default function Profile() {
           promotionalEmails: false
         })
       }
-    } catch (error) {
-      // Fallback to session data
-      setFormData({
-        name: session.user?.name || '',
-        email: session.user?.email || '',
-        phone: '',
-        emailNotifications: true,
-        smsNotifications: false,
-        farmUpdates: true,
-        orderNotifications: true,
-        promotionalEmails: false
-      })
     }
-  }
+    
+    // Fetch current user data from API
+    fetchUserProfile()
+  }, [session, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

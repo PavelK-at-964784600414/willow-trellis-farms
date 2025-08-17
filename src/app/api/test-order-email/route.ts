@@ -22,11 +22,11 @@ export async function GET() {
     console.log('🧪 Testing order emails with data:', testOrderData)
 
     // Test customer confirmation email
-    const customerEmailResult = await sendOrderConfirmationEmail(testOrderData)
+    await sendOrderConfirmationEmail(testOrderData)
     console.log('✅ Customer email sent successfully')
 
     // Test admin notification email  
-    const adminEmailResult = await sendAdminNotificationEmail(testOrderData)
+    await sendAdminNotificationEmail(testOrderData)
     console.log('✅ Admin email sent successfully')
 
     return NextResponse.json({

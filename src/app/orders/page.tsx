@@ -7,6 +7,16 @@ import Link from 'next/link'
 import { Navigation } from '@/components/Navigation'
 import { format } from 'date-fns'
 
+interface OrderItem {
+  id: string
+  quantity: number
+  price: number
+  product: {
+    name: string
+    price: number
+  }
+}
+
 interface Order {
   id: string
   status: string
@@ -16,21 +26,13 @@ interface Order {
   customerPhone?: string
   deliveryAddress?: string
   createdAt: string
-  items: Array<{
-    id: string
-    quantity: number
-    price: number
-    product: {
-      name: string
-      imageUrl: string
-    }
-  }>
+  items: OrderItem[]
 }
 
 export default function Orders() {
   const { data: session } = useSession()
   const router = useRouter()
-  const [orders, setOrders] = useState<any[]>([])
+  const [orders, setOrders] = useState<Order[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -144,7 +146,7 @@ export default function Orders() {
                 <div className="border-t border-gray-200 pt-4">
                   <h4 className="font-medium mb-2" style={{color: '#000000'}}>Items:</h4>
                   <div className="space-y-2" style={{color: '#000000'}}>
-                    {order.items.map((item: any) => (
+                    {order.items.map((item: OrderItem) => (
                       <div key={item.id} className="flex items-center justify-between text-sm">
                         <span>
                           {item.product.name} x {item.quantity}

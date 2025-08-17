@@ -16,14 +16,16 @@ interface GoogleOAuthPanelProps {
 export function GoogleOAuthPanel({ className = '' }: GoogleOAuthPanelProps) {
   const { data: session, status } = useSession()
   const {
-    loading,
+    isAuthenticated: _isAuthenticated,
+    user: _user,
+    accessToken: _accessToken,
     error,
     grantedScopes,
     requestAdditionalScopes,
     checkGrantedScopes,
     refreshToken,
     revokeAccess,
-    hasScope,
+    hasScope: _hasScope,
     canAccessDrive,
     canAccessCalendar,
     canAccessSheets,

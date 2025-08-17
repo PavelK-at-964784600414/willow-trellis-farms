@@ -15,7 +15,7 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { name, phone, emailNotifications, smsNotifications } = body
+    const { name, phone } = body
 
     // Validate input
     if (!name || name.trim().length === 0) {
@@ -57,7 +57,7 @@ export async function PATCH(request: NextRequest) {
   }
 }
 
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions)
     

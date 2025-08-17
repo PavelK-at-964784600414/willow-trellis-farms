@@ -21,7 +21,7 @@ export default function GoogleOAuthDemo() {
             🌾 Google OAuth 2.0 Demo
           </h1>
           <p className="text-lg text-green-700 max-w-3xl mx-auto">
-            Experience our official Google OAuth 2.0 implementation following Google's 
+            Experience our official Google OAuth 2.0 implementation following Google&apos;s 
             web server flow documentation. This demo showcases incremental authorization, 
             token management, and farm-specific features.
           </p>
@@ -210,7 +210,7 @@ export default function GoogleOAuthDemo() {
               rel="noopener noreferrer"
               className="underline"
             >
-              Google's official OAuth 2.0 documentation
+              Google&apos;s official OAuth 2.0 documentation
             </a>
           </p>
         </div>

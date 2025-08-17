@@ -32,7 +32,7 @@ export default function SignIn() {
       } else {
         router.push('/products')
       }
-    } catch (error) {
+    } catch (_error) {
       setError('Something went wrong')
     } finally {
       setLoading(false)

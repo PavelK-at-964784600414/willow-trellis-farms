@@ -1,5 +1,4 @@
 import nodemailer from 'nodemailer'
-import { prisma } from '@/lib/prisma'
 
 // Email configuration
 const transporter = nodemailer.createTransport({
@@ -27,10 +26,6 @@ export interface OrderEmailData {
 
 export async function sendOrderConfirmationEmail(data: OrderEmailData) {
   try {
-    const itemsList = data.items
-      .map(item => `${item.name} x${item.quantity} - $${item.price.toFixed(2)}`)
-      .join('\n')
-
     const mailOptions = {
       from: process.env.EMAIL_FROM,
       to: data.customerEmail,
@@ -155,10 +150,6 @@ export async function sendAdminNotificationEmail(orderData: OrderEmailData) {
   try {
     const adminEmail = process.env.ADMIN_EMAIL || process.env.EMAIL_FROM;
     
-    const itemsList = orderData.items
-      .map(item => `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`)
-      .join('\n')
-
     const mailOptions = {
       from: process.env.EMAIL_FROM,
       to: adminEmail,
