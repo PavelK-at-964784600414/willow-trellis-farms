@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
           }
         }
       } catch (error: unknown) {
-        results.errors.push(`Failed to notify ${user.name || user.email}: ${error.message}`)
+        results.errors.push(`Failed to notify ${user.name || user.email}: ${error instanceof Error ? error.message : 'Unknown error'}`)
       }
     }
 

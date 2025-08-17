@@ -16,9 +16,7 @@ interface GoogleOAuthPanelProps {
 export function GoogleOAuthPanel({ className = '' }: GoogleOAuthPanelProps) {
   const { data: session, status } = useSession()
   const {
-    isAuthenticated: _isAuthenticated,
-    user: _user,
-    accessToken: _accessToken,
+    loading,
     error,
     grantedScopes,
     requestAdditionalScopes,
