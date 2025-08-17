@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { CheckCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 interface ToastProps {

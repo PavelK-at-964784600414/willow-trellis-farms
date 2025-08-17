@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { clearProductCache } from '@/lib/google-sheets'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'

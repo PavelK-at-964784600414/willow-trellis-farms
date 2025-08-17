@@ -154,7 +154,7 @@ export default function Checkout() {
                     style={{color: '#000000'}}
                     placeholder="+1 (555) 123-4567"
                   />
-                  <p className="text-xs mt-1" style={{color: '#000000'}}>We'll call you if there are any questions about your order</p>
+                  <p className="text-xs mt-1" style={{color: '#000000'}}>We&apos;ll call you if there are any questions about your order</p>
                 </div>
 
                 <div>

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
+import crypto from 'crypto'
 import {
   generateIncrementalAuthUrl,
   exchangeCodeForTokens,
@@ -199,9 +200,8 @@ export async function POST(request: NextRequest) {
 
 // Helper function to generate secure state (moved here for API context)
 function generateSecureState(): string {
-  const crypto = require('crypto')
   return crypto.randomBytes(32).toString('hex')
 }
 
 // This would typically be stored in session/database and retrieved here
-let expectedState = ''
+const expectedState = ''

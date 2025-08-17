@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -30,9 +30,25 @@ interface Order {
 export default function Orders() {
   const { data: session } = useSession()
   const router = useRouter()
-  const [orders, setOrders] = useState<Order[]>([])
-  const [loading, setLoading] = useState(true)
+  const [orders, setOrders] = useState<any[]>([])
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
+
+  const fetchOrders = useCallback(async () => {
+    try {
+      const response = await fetch('/api/orders')
+      if (!response.ok) {
+        throw new Error('Failed to fetch orders')
+      }
+      const data = await response.json()
+      setOrders(data.orders || [])
+    } catch (error) {
+      console.error('Error fetching orders:', error)
+      setError('Failed to load orders')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
     if (!session) {
@@ -40,22 +56,7 @@ export default function Orders() {
       return
     }
     fetchOrders()
-  }, [session])
-
-  const fetchOrders = async () => {
-    try {
-      const response = await fetch('/api/orders')
-      if (!response.ok) {
-        throw new Error('Failed to fetch orders')
-      }
-      const data = await response.json()
-      setOrders(data)
-    } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : 'An error occurred')
-    } finally {
-      setLoading(false)
-    }
-  }
+  }, [session, router, fetchOrders])
 
   const getStatusBadge = (status: string) => {
     const statusColors = {
@@ -78,7 +79,7 @@ export default function Orders() {
     return null
   }
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen" style={{backgroundColor: '#D9D7D3'}}>
         <Navigation />
@@ -111,7 +112,7 @@ export default function Orders() {
         
         {orders.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-lg mb-4" style={{color: '#000000'}}>You haven't placed any orders yet.</p>
+            <p className="text-lg mb-4" style={{color: '#000000'}}>You haven&apos;t placed any orders yet.</p>
             <Link
               href="/products"
               className="inline-block bg-green-600 text-white font-semibold px-8 py-3 rounded-lg text-lg hover:bg-green-700 transition-colors"
@@ -143,7 +144,7 @@ export default function Orders() {
                 <div className="border-t border-gray-200 pt-4">
                   <h4 className="font-medium mb-2" style={{color: '#000000'}}>Items:</h4>
                   <div className="space-y-2" style={{color: '#000000'}}>
-                    {order.items.map(item => (
+                    {order.items.map((item: any) => (
                       <div key={item.id} className="flex items-center justify-between text-sm">
                         <span>
                           {item.product.name} x {item.quantity}

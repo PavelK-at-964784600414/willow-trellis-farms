@@ -1,4 +1,5 @@
 import { google } from 'googleapis'
+import crypto from 'crypto'
 
 // Google OAuth2 configuration according to official documentation
 const oauth2Client = new google.auth.OAuth2(
@@ -193,7 +194,6 @@ function generateSecureState(): string {
     window.crypto.getRandomValues(array)
   } else {
     // Node.js environment
-    const crypto = require('crypto')
     return crypto.randomBytes(32).toString('hex')
   }
   
