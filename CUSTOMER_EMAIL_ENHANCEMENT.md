@@ -9,7 +9,7 @@ The customer confirmation email (`sendOrderConfirmationEmail`) now includes comp
 #### 📝 Order Changes & Cancellations Section
 - **Clear Contact Methods:**
   - Phone: (613) 581-9303
-  - Email: pavelklu88@gmail.com (admin email from env)
+  - Email: willowtrellisfarms@gmail.com (admin email from env)
   - Reply to confirmation email directly
 
 - **Time-Based Policies:**
@@ -48,7 +48,7 @@ The customer confirmation email (`sendOrderConfirmationEmail`) now includes comp
 
 ### 🧪 Testing Completed
 
-- ✅ **Test Email Sent:** Enhanced confirmation email sent to pavelklu88@gmail.com
+- ✅ **Test Email Sent:** Enhanced confirmation email sent to willowtrellisfarms@gmail.com
 - ✅ **Order ID:** TEST-ENHANCED-456
 - ✅ **All Policies Included:** Changes, cancellations, contact info, business hours
 - ✅ **Visual Formatting:** Professional farm-themed email design

@@ -137,6 +137,60 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Seeds Section */}
+        <div className="bg-light-bg" style={{backgroundColor: '#D9D7D3'}}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl font-rustic font-bold text-light-text mb-6" style={{color: '#000000'}}>
+                  🌱 Grow Your Own Garden
+                </h2>
+                <p className="text-xl text-light-text mb-6 leading-relaxed" style={{color: '#000000'}}>
+                  Start your own farm at home with our premium heirloom seeds. 
+                  Hand-selected varieties that thrive in our local climate.
+                </p>
+                <ul className="text-light-text space-y-3 mb-8" style={{color: '#000000'}}>
+                  <li className="flex items-center">
+                    <span className="text-green-600 mr-3">✓</span>
+                    Heirloom & organic varieties
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-green-600 mr-3">✓</span>
+                    High germination rates
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-green-600 mr-3">✓</span>
+                    Growing guides included
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-green-600 mr-3">✓</span>
+                    Perfect for Ontario gardens
+                  </li>
+                </ul>
+                <Link
+                  href="/seeds"
+                  className="inline-block bg-green-600 text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-green-700 transition-colors shadow-lg transform hover:scale-105"
+                >
+                  🌱 Browse Seeds Collection
+                </Link>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                {['🌾 Herbs', '🥕 Vegetables', '🌻 Flowers', '🍅 Tomatoes'].map((seed, index) => (
+                  <div key={index} className="bg-white rounded-xl p-6 text-center shadow-lg border-2 border-gray-200 hover:shadow-xl transition-shadow">
+                    <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-3xl">{seed.split(' ')[0]}</span>
+                    </div>
+                    <h4 className="font-rustic font-bold text-lg text-light-text" style={{color: '#000000'}}>
+                      {seed.split(' ')[1]} Seeds
+                    </h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* CTA Section */}
         <div className="bg-light-bg" style={{backgroundColor: '#D9D7D3'}}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
@@ -159,6 +213,12 @@ export default function Home() {
                 className="inline-block border-2 border-green-600 text-green-600 font-bold px-10 py-4 rounded-xl text-lg hover:bg-green-600 hover:text-white transition-colors"
               >
                 🛒 Shop Fresh Produce
+              </Link>
+              <Link
+                href="/seeds"
+                className="inline-block border-2 border-green-500 text-green-500 font-bold px-10 py-4 rounded-xl text-lg hover:bg-green-500 hover:text-white transition-colors"
+              >
+                🌱 Browse Seeds
               </Link>
             </div>
           </div>
