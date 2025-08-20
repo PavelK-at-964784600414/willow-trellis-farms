@@ -1,3 +1,5 @@
+https://willow-trellis-farms.vercel.app
+
 # Willow Trellis Farms - Farm Fresh Produce Pickup Platform
 
 A modern Next.js 14 farm pickup application for fresh produce with comprehensive features including authentication, shopping cart, order management, admin panel, and advanced notification system.
